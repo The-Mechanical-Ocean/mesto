@@ -3,5 +3,6 @@
   max-width: 142px;
   height: 33px;
   z-index: 1;
+  color: #FFFFFF;
   outline: 1px solid red;
 }

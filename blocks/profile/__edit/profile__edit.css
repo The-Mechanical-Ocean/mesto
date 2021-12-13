@@ -1,0 +1,10 @@
+.profile__edit {
+  align-self:flex-end;
+  width: 24px;
+  height: 24px;
+  background-color: #000000;
+  border: 1px solid #FFFFFF;
+}
+.profile__edit:hover {
+  opacity: 0.6;
+}

@@ -7,3 +7,14 @@
   margin: 40px auto 0;
   outline: 1px solid red;
 }
+@media screen and (max-width: 900px) {
+  .profile {
+    max-width: 560px;
+  }
+}
+@media screen and (max-width: 620px) {
+  .profile {
+    flex-direction: column;
+    max-width: 282px;
+  }
+}

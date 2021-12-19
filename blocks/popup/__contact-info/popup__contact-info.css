@@ -1,0 +1,15 @@
+.popup__contact-info {
+  border: none;
+  max-width: 358px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 34px auto 37px;
+  padding: 0;
+}
+@media screen and (max-width: 620px) {
+  .popup__contact-info {
+    max-width: 238px;
+    margin: 25px auto;
+  }
+}

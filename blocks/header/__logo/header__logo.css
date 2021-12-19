@@ -3,14 +3,15 @@
   background-size: cover;
   width: 142px;
   height: 33px;
-  z-index: 1;
   color: #FFFFFF;
   outline: 1px solid red;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 620px) {
   .header__logo {
     width: 103px;
     height: 24px;
-    margin: 27px;
+    position: absolute;
+    top: 28px;
+    left: 27px;
   }
 }

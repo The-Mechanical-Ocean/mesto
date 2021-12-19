@@ -1,6 +1,8 @@
 .profile__button-img-edit {
-  background-image: url(../../../images/profile__button-edit.svg);
+
   color: #FFFFFF;
   width: 10px;
   height: 10px;
+
 }
+/* Сделать запрос */

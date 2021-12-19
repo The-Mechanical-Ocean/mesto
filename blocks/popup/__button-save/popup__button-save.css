@@ -6,6 +6,11 @@
   background: #000000;
   border: none;
   border-radius: 2px;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #FFFFFF;
 }
 .popup__button-save:hover {
   opacity: 0.8;
@@ -13,8 +18,11 @@
 }
 @media screen and (max-width: 620px) {
   .popup__button-save {
+    font-size: 14px;
+    line-height: 17px;
     max-width: 238px;
     width: 238px;
     min-height: 46px;
   }
 }
+/* Поправить сохрнаить */

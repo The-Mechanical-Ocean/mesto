@@ -10,8 +10,3 @@
   opacity: 0.7;
   transition: opacity 0.4s ease 0s;
 }
-.elements__button-like:active {
-  background-image: url(../../../images/elements__button-like-black.svg);
-  opacity: 1;
-}
-/* Нужно ли это */

@@ -17,6 +17,7 @@
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button type="button" class="profile__button-edit">
+            <!-- проверить нужен ли отдельный div для img -->
             <div class="profile__button-img-edit"></div>
           </button>
           <p class="profile__description">Исследователь океана</p>
@@ -75,15 +76,15 @@
     </footer>
   </div>
   <div class="popup">
-    <form class="popup__container">
+    <div class="popup__container">
       <button type="button" class="popup__button-close"></button>
-      <fieldset class="popup__contact-info">
-        <h2 class="popup__name-form">Редактировать профиль</h2>
-        <input class="popup__user-name" type="text" name="firstname" value="" placeholder="Жак-Ив Кусто" maxlength="20">
-        <input class="popup__user-description" type="text" name="description" value="" placeholder="Исследователь океана" maxlength="80">
-        <button class="popup__button-save" type="submit"><p class="popup__button-save-text">Сохранить</p></button>
-      </fieldset>
-    </form>
+      <h2 class="popup__name-form">Редактировать профиль</h2>
+      <form class="popup__contact-info" name="form-profile">
+        <input class="popup__user-name" type="text" name="firstname" placeholder="Ваше имя">
+        <input class="popup__user-description" type="text" name="description" placeholder="Описание">
+        <button class="popup__button-save" type="submit">Сохранить</button>
+      </form>
+    </div>
   </div>
   <script src="./scripts/index.js"></script>
 </body>

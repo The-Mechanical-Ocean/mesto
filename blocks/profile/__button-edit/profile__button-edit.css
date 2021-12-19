@@ -1,4 +1,7 @@
 .profile__button-edit {
+  background-image: url(../../../images/profile__button-edit.svg);
+  background-size: cover;
+  background-position: center;
   align-self:flex-end;
   margin-bottom: 8px;
   width: 24px;
@@ -6,10 +9,16 @@
   background-color: #000000;
   border: 1px solid #FFFFFF;
   outline: 1px solid red;
+  /* разобраться с иконкой */
 }
 .profile__button-edit:hover {
   opacity: 0.6;
   transition: opacity 0.4s ease 0s;
+}
+@media screen and (max-width: 900px) {
+  .profile__button-edit {
+    margin-bottom: 6px;
+  }
 }
 @media screen and (max-width: 620px) {
   .profile__button-edit {

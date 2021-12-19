@@ -1,30 +1,34 @@
 const popupOpenButton = document.querySelector('.profile__button-edit');
 const popupCloseButton = document.querySelector('.popup__button-close');
+const popup = document.querySelector('.popup');
+const popupButtonSave = document.querySelector('.popup__button-save');
+const popupForm = document.querySelector('.popup__container');
+const popupUserName = document.querySelector('.popup__user-name');
+const popupUserDescription = document.querySelector('.popup__user-description');
+const profileUserName = document.querySelector('.profile__name');
+const profileDescription = document.querySelector('.profile__description');
 
 function openPopup() {
+  popupUserName.value = profileUserName.textContent;
+  popupUserDescription.value = profileDescription.textContent;
   popup.classList.add('popup_opened');
 }
-
+console.log(profileUserName);
 function closedPopup() {
   popup.classList.remove('popup_opened');
 }
 
 popupOpenButton.addEventListener('click', openPopup);
-popupCloseButton.addEventListener('click', closedPopup);
 
-let popup = document.querySelector('.popup');
-let popupButtonSave = document.querySelector('.popup__button-save');
-let popupUserName = document.querySelector('.popup__user-name');
-let popupUserDescription = document.querySelector('.popup__user-description');
-console.log('popupUserName');
 function formSubmitHandler (evt) {
   evt.preventDefault();
 
-    let popupUserName = popupForm.querySelector('.popup__user-name');
-    let popupUserDescription = popupForm.querySelector('.popup__user-description');
+    profileUserName.textContent = popupUserName.value;
+    profileDescription.textContent = popupUserDescription.value;
 
-    popupUserName.textContent = popupUserName.value;
-    popupUserDescription.textContent = popupUserDescription.value;
+    closedPopup();
+
 }
+popupCloseButton.addEventListener('click', closedPopup);
 popupButtonSave.addEventListener('click', formSubmitHandler);
-popupButtonSave.addEventListener('submit', formSubmitHandler);
+popupForm.addEventListener('submit', formSubmitHandler);

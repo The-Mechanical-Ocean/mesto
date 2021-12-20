@@ -1,7 +1,7 @@
 .popup__button-save {
   width: 358px;
-  min-height: 50px;
-  margin: 45px auto 0;
+  height: 50px;
+  margin: 48px auto 0;
   padding: 0;
   background: #000000;
   border: none;
@@ -20,9 +20,8 @@
   .popup__button-save {
     font-size: 14px;
     line-height: 17px;
-    max-width: 238px;
     width: 238px;
-    min-height: 46px;
+    height: 46px;
+    margin-top: 45px;
   }
 }
-/* Поправить сохрнаить */

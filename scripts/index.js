@@ -13,7 +13,7 @@ function openPopup() {
   popupUserDescription.value = profileDescription.textContent;
   popup.classList.add('popup_opened');
 }
-console.log(profileUserName);
+
 function closedPopup() {
   popup.classList.remove('popup_opened');
 }
@@ -29,6 +29,7 @@ function formSubmitHandler (evt) {
     closedPopup();
 
 }
+
 popupCloseButton.addEventListener('click', closedPopup);
 popupButtonSave.addEventListener('click', formSubmitHandler);
 popupForm.addEventListener('submit', formSubmitHandler);

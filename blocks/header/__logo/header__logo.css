@@ -4,14 +4,11 @@
   width: 142px;
   height: 33px;
   color: #FFFFFF;
-  outline: 1px solid red;
 }
 @media screen and (max-width: 620px) {
   .header__logo {
     width: 103px;
     height: 24px;
-    position: absolute;
-    top: 28px;
-    left: 27px;
+    margin-left: 27px;
   }
 }

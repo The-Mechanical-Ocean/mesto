@@ -4,7 +4,7 @@
   background-image: url(../../../images/elements__button-like.svg);
   background-size: cover;
   border: none;
-  outline: 1px solid red;
+  background-color: transparent;
 }
 .elements__button-like:hover {
   opacity: 0.7;

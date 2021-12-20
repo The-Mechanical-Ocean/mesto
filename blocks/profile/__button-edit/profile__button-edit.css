@@ -1,15 +1,15 @@
 .profile__button-edit {
   background-image: url(../../../images/profile__button-edit.svg);
-  background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   align-self:flex-end;
-  margin-bottom: 8px;
+  margin-bottom: 9px;
+  margin-right: auto;
+  margin-left: 20px;
   width: 24px;
   height: 24px;
   background-color: #000000;
   border: 1px solid #FFFFFF;
-  outline: 1px solid red;
-  /* разобраться с иконкой */
 }
 .profile__button-edit:hover {
   opacity: 0.6;
@@ -23,8 +23,8 @@
 @media screen and (max-width: 620px) {
   .profile__button-edit {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 8px;
+    right: 18px;
     width: 18px;
     height: 18px;
   }

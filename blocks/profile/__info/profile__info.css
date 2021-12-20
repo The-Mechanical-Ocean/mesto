@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 340px;
+  max-width: 350px;
 }
 .profile__info:nth-child(2) {
   margin-right: auto;

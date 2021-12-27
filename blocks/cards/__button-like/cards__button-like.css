@@ -1,12 +1,12 @@
-.elements__button-like {
+.cards__button-like {
   width: 22px;
   height: 19px;
-  background-image: url(../../../images/elements__button-like.svg);
+  background-image: url(../../../images/cards__button-like.svg);
   background-size: cover;
   border: none;
   background-color: transparent;
 }
-.elements__button-like:hover {
+.cards__button-like:hover {
   opacity: 0.7;
   transition: opacity 0.4s ease 0s;
 }

@@ -1,4 +1,4 @@
-.elements {
+.cards__items {
   display: grid;
   grid: repeat(2, 1fr) / repeat(3, 1fr);
   gap: 20px 17px;
@@ -10,7 +10,7 @@
   box-sizing: border-box;
 }
 @media screen and (max-width: 900px) {
-  .elements {
+  .cards__items {
     max-width: 560px;
     margin-top: 36px;
     gap: 15px 12px;
@@ -18,9 +18,10 @@
   }
 }
 @media screen and (max-width: 620px) {
-  .elements {
+  .cards__items {
     grid: repeat(6, 1fr) / 1fr;
     max-width: 282px;
+    row-gap: 20px;
   }
 }
 

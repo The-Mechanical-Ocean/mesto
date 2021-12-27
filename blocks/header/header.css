@@ -14,5 +14,6 @@
     position: relative;
     margin-top: 28px;
     max-width: 320px;
+    min-height: 56px;
   }
 }

@@ -21,50 +21,52 @@
         </div>
         <button type="button" class="profile__button-add"></button>
       </section>
-      <ul class="elements">
-        <li class="elements__item">
-        <img class="elements__img" src="./images/dolina-geizerov.png" alt="Вид на долину гейзеров">
-        <div class="elements__description">
-          <h2 class="elements__text">Долина гейзеров</h2>
-          <button type="button" class="elements__button-like"></button>
-        </div>
-        </li>
-        <li class="elements__item">
-          <img class="elements__img" src="./images/les-komi.png" alt="Вид на лес Коми">
-          <div class="elements__description">
-            <h2 class="elements__text">Лес Коми</h2>
-            <button type="button" class="elements__button-like"></button>
+      <section class="cards">
+        <ul class="cards__items">
+          <li class="cards__item">
+          <img class="cards__img" src="./images/dolina-geizerov.png" alt="Вид на долину гейзеров">
+          <div class="cards__description">
+            <h2 class="cards__text">Долина гейзеров</h2>
+            <button type="button" class="cards__button-like"></button>
           </div>
-        </li>
-        <li class="elements__item">
-          <img class="elements__img" src="./images/plato-putorana.png" alt="Вид на плато Путорана">
-          <div class="elements__description">
-            <h2 class="elements__text">Плато Путорана</h2>
-            <button type="button" class="elements__button-like"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img class="elements__img" src="./images/ozero-svetloyar.png" alt="Вид на озеро Светлояр">
-          <div class="elements__description">
-            <h2 class="elements__text">Озеро Светлояр</h2>
-            <button type="button" class="elements__button-like"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img class="elements__img" src="./images/malinovoe-ozero.png" alt="Вид на Малиновое озеро">
-          <div class="elements__description">
-            <h2 class="elements__text">Малиновое озеро</h2>
-            <button type="button" class="elements__button-like"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img class="elements__img" src="./images/ozero-elton.png" alt="Вид на озеро Эльтон">
-          <div class="elements__description">
-            <h2 class="elements__text">Озеро Эльтон</h2>
-            <button type="button" class="elements__button-like"></button>
-          </div>
-        </li>
-      </ul>
+          </li>
+          <li class="cards__item">
+            <img class="cards__img" src="./images/les-komi.png" alt="Вид на лес Коми">
+            <div class="cards__description">
+              <h2 class="cards__text">Лес Коми</h2>
+              <button type="button" class="cards__button-like"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__img" src="./images/plato-putorana.png" alt="Вид на плато Путорана">
+            <div class="cards__description">
+              <h2 class="cards__text">Плато Путорана</h2>
+              <button type="button" class="cards__button-like"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__img" src="./images/ozero-svetloyar.png" alt="Вид на озеро Светлояр">
+            <div class="cards__description">
+              <h2 class="cards__text">Озеро Светлояр</h2>
+              <button type="button" class="cards__button-like"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__img" src="./images/malinovoe-ozero.png" alt="Вид на Малиновое озеро">
+            <div class="cards__description">
+              <h2 class="cards__text">Малиновое озеро</h2>
+              <button type="button" class="cards__button-like"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__img" src="./images/ozero-elton.png" alt="Вид на озеро Эльтон">
+            <div class="cards__description">
+              <h2 class="cards__text">Озеро Эльтон</h2>
+              <button type="button" class="cards__button-like"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2021. Mesto Russia</p>
@@ -75,8 +77,8 @@
       <button type="button" class="popup__button-close"></button>
       <h2 class="popup__name-form">Редактировать профиль</h2>
       <form class="popup__contact-info" name="form-profile">
-        <input class="popup__user-name" type="text" name="firstname" placeholder="Ваше имя">
-        <input class="popup__user-description" type="text" name="description" placeholder="Описание">
+        <input class="popup__input popup__input_type_name" type="text" name="firstname" placeholder="Ваше имя">
+        <input class="popup__input popup__input_type_job" type="text" name="description" placeholder="Описание">
         <button class="popup__button-save" type="submit">Сохранить</button>
       </form>
     </div>

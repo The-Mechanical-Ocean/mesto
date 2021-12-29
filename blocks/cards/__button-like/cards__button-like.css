@@ -5,6 +5,7 @@
   background-size: cover;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 .cards__button-like:hover {
   opacity: 0.7;

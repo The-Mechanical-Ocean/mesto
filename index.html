@@ -23,54 +23,7 @@
       </section>
       <section class="cards">
         <ul class="cards__items">
-          <li class="cards__item">
-            <button type="button" class="cards__button-del"></button>
-            <img class="cards__img" src="./images/dolina-geizerov.png" alt="Вид на долину гейзеров">
-            <div class="cards__description">
-              <h2 class="cards__text">Долина гейзеров</h2>
-              <button type="button" class="cards__button-like"></button>
-            </div>
-          </li>
-          <li class="cards__item">
-            <button type="button" class="cards__button-del"></button>
-            <img class="cards__img" src="./images/les-komi.png" alt="Вид на лес Коми">
-            <div class="cards__description">
-              <h2 class="cards__text">Лес Коми</h2>
-              <button type="button" class="cards__button-like"></button>
-            </div>
-          </li>
-          <li class="cards__item">
-            <button type="button" class="cards__button-del"></button>
-            <img class="cards__img" src="./images/plato-putorana.png" alt="Вид на плато Путорана">
-            <div class="cards__description">
-              <h2 class="cards__text">Плато Путорана</h2>
-              <button type="button" class="cards__button-like"></button>
-            </div>
-          </li>
-          <li class="cards__item">
-            <button type="button" class="cards__button-del"></button>
-            <img class="cards__img" src="./images/ozero-svetloyar.png" alt="Вид на озеро Светлояр">
-            <div class="cards__description">
-              <h2 class="cards__text">Озеро Светлояр</h2>
-              <button type="button" class="cards__button-like"></button>
-            </div>
-          </li>
-          <li class="cards__item">
-            <button type="button" class="cards__button-del"></button>
-            <img class="cards__img" src="./images/malinovoe-ozero.png" alt="Вид на Малиновое озеро">
-            <div class="cards__description">
-              <h2 class="cards__text">Малиновое озеро</h2>
-              <button type="button" class="cards__button-like"></button>
-            </div>
-          </li>
-          <li class="cards__item">
-            <button type="button" class="cards__button-del"></button>
-            <img class="cards__img" src="./images/ozero-elton.png" alt="Вид на озеро Эльтон">
-            <div class="cards__description">
-              <h2 class="cards__text">Озеро Эльтон</h2>
-              <button type="button" class="cards__button-like"></button>
-            </div>
-          </li>
+
         </ul>
       </section>
     </main>
@@ -78,9 +31,9 @@
       <p class="footer__copyright">&copy; 2021. Mesto Russia</p>
     </footer>
   </div>
-  <div class="popup">
-    <div class="popup__container">
-      <button type="button" class="popup__button-close"></button>
+  <div class="popup popup_type_edit">
+    <div class="popup__container popup__container_type_edit">
+      <button type="button" class="popup__button-close popup__button-close_type_edit"></button>
       <h2 class="popup__name-form">Редактировать профиль</h2>
       <form class="popup__contact-info" name="form-profile">
         <input class="popup__input popup__input_type_name" type="text" name="firstname" placeholder="Ваше имя">
@@ -89,6 +42,35 @@
       </form>
     </div>
   </div>
+  <div class="popup popup_type_add-card">
+    <div class="popup__container popup__container_type_add-card">
+      <button type="button" class="popup__button-close popup__button-close_type_add-card"></button>
+      <h2 class="popup__name-form">Новое место</h2>
+      <form class="popup__contact-info" name="form-profile">
+        <input class="popup__input popup__input_type_name-img" type="text" name="firstname" placeholder="Название">
+        <input class="popup__input popup__input_type_link" type="link" name="description" placeholder="Ссылка на картинку">
+        <button class="popup__button-save" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_type_image-open">
+    <img class="popup__img popup__img_type_open">
+    <figcaption class="popup__caption popup__caption_type_img-open">asdasdasd</figcaption>
+  </div>
+  <div class="popup popup_type_image-add">
+    <img class="popup__img popup__img_type_add">
+    <figcaption class="lead__caption popup__caption_type_img-add">asdasdasd</figcaption>
+  </div>
+  <template class="cards-template">
+    <li class="cards__item">
+      <button type="button" class="cards__button-del"></button>
+      <img class="cards__img" src="" alt="">
+      <div class="cards__description">
+        <h2 class="cards__text"></h2>
+        <button type="button" class="cards__button-like"></button>
+      </div>
+    </li>
+  </template>
   <script src="./scripts/index.js"></script>
 </body>
 </html>

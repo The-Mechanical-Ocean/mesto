@@ -35,7 +35,7 @@
     <div class="popup__container popup__container_type_edit">
       <button type="button" class="popup__button-close popup__button-close_type_edit"></button>
       <h2 class="popup__name-form">Редактировать профиль</h2>
-      <form class="popup__contact-info" name="form-profile">
+      <form class="popup__form" name="form-profile">
         <input class="popup__input popup__input_type_name" type="text" name="firstname" placeholder="Ваше имя">
         <input class="popup__input popup__input_type_job" type="text" name="description" placeholder="Описание">
         <button class="popup__button-save" type="submit">Сохранить</button>
@@ -46,20 +46,19 @@
     <div class="popup__container popup__container_type_add-card">
       <button type="button" class="popup__button-close popup__button-close_type_add-card"></button>
       <h2 class="popup__name-form">Новое место</h2>
-      <form class="popup__contact-info" name="form-profile">
+      <form class="popup__form popup__form_type_img" name="form-profile">
         <input class="popup__input popup__input_type_name-img" type="text" name="firstname" placeholder="Название">
         <input class="popup__input popup__input_type_link" type="link" name="description" placeholder="Ссылка на картинку">
         <button class="popup__button-save" type="submit">Создать</button>
       </form>
     </div>
   </div>
-  <div class="popup popup_type_image-open">
-    <img class="popup__img popup__img_type_open">
-    <figcaption class="popup__caption popup__caption_type_img-open">asdasdasd</figcaption>
-  </div>
-  <div class="popup popup_type_image-add">
-    <img class="popup__img popup__img_type_add">
-    <figcaption class="lead__caption popup__caption_type_img-add">asdasdasd</figcaption>
+  <div class="popup popup_type_image">
+    <div class="popup__card">
+      <button type="button" class="popup__button-close popup__button-close_type_img-card"></button>
+      <img class="popup__img">
+      <figcaption class="popup__caption popup__caption_type_img-open">asdasdasd</figcaption>
+    </div>
   </div>
   <template class="cards-template">
     <li class="cards__item">

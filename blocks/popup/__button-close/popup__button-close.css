@@ -4,12 +4,13 @@
   background: #FFFFFF;
   background-image: url(../../../images/popup__button-close.svg);
   background-size: cover;
-  background-color: #000000;
+  background-color: transparent;
   border: none;
   position: absolute;
   top: -40px;
   right: -40px;
   cursor: pointer;
+  outline: 1px solid red;
 }
 .popup__button-close:hover {
   opacity: 0.8;

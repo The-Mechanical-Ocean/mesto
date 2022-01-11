@@ -1,3 +1,7 @@
 .popup__card {
+  margin-top: 85px;
   position: relative;
+  width: 75vw;
+  height: 75vh;
+  outline: 1px solid red;
 }

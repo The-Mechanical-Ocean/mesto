@@ -4,7 +4,7 @@ const popupImage = document.querySelector('.popup_type_image');
 
 //popup form's
 const popupFormEdit = popupEdit.querySelector('.popup__container_type_edit');
-const popupFormAdd = document.querySelector('.popup__container_type_add-card');
+const popupFormAdd = popupAdd.querySelector('.popup__container_type_add-card');
 
 //button
 const popupOpenButtonEdit = document.querySelector('.profile__button-edit');
@@ -84,36 +84,41 @@ const initialCards = [
   }
 ];
 
-  const list = document.querySelector('.cards__items');
-  const cardTemplate = document.querySelector('.cards-template').content;
+const list = document.querySelector('.cards__items');
+const cardTemplate = document.querySelector('.cards-template').content;
 
-// сделать создание, добавление, 3-я функция - совмещение.
-
-initialCards.forEach(function(cardData){
+function newCard(name, link){
   const cardElement = cardTemplate.cloneNode(true);
   const cardImg = cardElement.querySelector('.cards__img');
   const cardText = cardElement.querySelector('.cards__text');
   const buttonLike = cardElement.querySelector('.cards__button-like');
   const buttonDel = cardElement.querySelector('.cards__button-del');
   
-  cardText.textContent = cardData.name;
-  cardImg.src = cardData.link;
-  cardImg.alt = cardData.name;
-  list.prepend(cardElement);
+  cardText.textContent = name;
+  cardImg.src = link;
+  cardImg.alt = name;
   
   cardImg.addEventListener('click', PopupImg);
   buttonLike.addEventListener('click', like);
   buttonDel.addEventListener('click', delImageHandler);
   
   return cardElement;
-})
+};
+
+function addCards(cardElement){
+  list.prepend(cardElement);
+};
+
+initialCards.forEach(cardElement => {
+  const card = newCard(cardElement.name, cardElement.link);
+  addCards(card);
+});
 
 function PopupImg(evt) {
-    popupImgField.src = evt.target.src;
-    popupImgDescription.textContent = evt.target.alt;
-    popupImgField.alt = evt.target.alt;
-    openPopup(popupImage);
-    console.log ('popupImgDescription');
+  popupImgField.src = evt.target.src;
+  popupImgDescription.textContent = evt.target.alt;
+  popupImgField.alt = evt.target.alt;
+  openPopup(popupImage);
 }
 
 function like(evt) {
@@ -124,11 +129,13 @@ function delImageHandler(evt) {
   evt.target.closest('.cards__item').remove();
 };
 
-// function addImagaeHandler(evt) {
-//   evt.preventDefault();
-//   const cardElement = createCard(inputPhotoName.value, inputPhoto.value);
-//   closePopup(popupPhoto);
-//   popupFormAdd.reset();
-// };
+function addImageHandler(evt) {
+  evt.preventDefault();
+  const card = newCard(popupNameImg.value, popupNameLink.value);
+  addCards(card);
+  closePopup(popupAdd);
+  popupFormAdd.reset();
+};
+
 popupCloseButtonImage.addEventListener('click', () => closePopup(popupImage));
-popupFormAdd.addEventListener('submit', addImagaeHandler);
+popupFormAdd.addEventListener('submit', addImageHandler);

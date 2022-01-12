@@ -102,7 +102,7 @@ function newCard(name, link){
   
   cardImg.addEventListener('click', PopupImg);
   buttonLike.addEventListener('click', like);
-  buttonDel.addEventListener('click', delImageHandler);
+  buttonDel.addEventListener('click', delImage);
   
   return cardElement;
 };
@@ -127,11 +127,11 @@ function like(evt) {
   evt.target.classList.toggle('cards__button-like_active');
 }
 
-function delImageHandler(evt) {
+function delImage(evt) {
   evt.target.closest('.cards__item').remove();
 };
 
-function addImageHandler(evt) {
+function addImage(evt) {
   evt.preventDefault();
   const card = newCard(popupNameImg.value, popupNameLink.value);
   addCards(card);
@@ -140,4 +140,4 @@ function addImageHandler(evt) {
 };
 
 popupCloseButtonImage.addEventListener('click', () => closePopup(popupImage));
-popupFormAdd.addEventListener('submit', addImageHandler);
+popupFormAdd.addEventListener('submit', addImage);

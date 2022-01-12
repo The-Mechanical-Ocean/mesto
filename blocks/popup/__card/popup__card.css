@@ -1,6 +1,6 @@
 .popup__card {
   margin-top: 85px;
   position: relative;
-  width: 75vw;
-  height: 75vh;
+  max-width: 75vw;
+  width: auto;
 }

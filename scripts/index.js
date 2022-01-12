@@ -1,3 +1,4 @@
+//popup menu
 const popupAdd = document.querySelector('.popup_type_add-card');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupImage = document.querySelector('.popup_type_image');
@@ -16,14 +17,14 @@ const popupCloseButtonImage = popupImage.querySelector('.popup__button-close_typ
 //popup input's
 const popupUserName = document.querySelector('.popup__input_type_name');
 const popupUserDescription = document.querySelector('.popup__input_type_job');
-const popupNameImg = document.querySelector('.popup__input_type_name-img'); //!
-const popupNameLink = document.querySelector('.popup__input_type_link');  //!
+const popupNameImg = document.querySelector('.popup__input_type_name-img'); 
+const popupNameLink = document.querySelector('.popup__input_type_link');  
 
 //html fields
 const profileUserName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
-//new
+//new fields
 const popupImgField = document.querySelector('.popup__img');
 const popupImgDescription = document.querySelector('.popup__caption');
 
@@ -84,6 +85,7 @@ const initialCards = [
   }
 ];
 
+//fields gridBox
 const list = document.querySelector('.cards__items');
 const cardTemplate = document.querySelector('.cards-template').content;
 

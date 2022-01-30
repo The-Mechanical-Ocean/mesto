@@ -33,9 +33,11 @@
     <div class="popup__container popup__container_type_edit">
       <button type="button" class="popup__button-close popup__button-close_type_edit"></button>
       <h2 class="popup__name-form">Редактировать профиль</h2>
-      <form class="popup__form" name="form-profile">
-        <input class="popup__input popup__input_type_name" type="text" name="firstname" placeholder="Ваше имя">
-        <input class="popup__input popup__input_type_job" type="text" name="description" placeholder="Описание">
+      <form class="popup__form" name="form-profile" novalidate>
+        <input class="popup__input popup__input_type_name" type="text" name="firstname" id="firstname" placeholder="Ваше имя" minlength="2" maxlength="40" required>
+        <span></span>
+        <input class="popup__input popup__input_type_job" type="text" name="description" id="description" placeholder="Описание" minlength="2" maxlength="200" required>
+        <span class="popup__input-error"></span>
         <button class="popup__button-save" type="submit">Сохранить</button>
       </form>
     </div>
@@ -44,9 +46,9 @@
     <div class="popup__container popup__container_type_add-card">
       <button type="button" class="popup__button-close popup__button-close_type_add-card"></button>
       <h2 class="popup__name-form">Новое место</h2>
-      <form class="popup__form popup__form_type_img" name="form-profile">
-        <input class="popup__input popup__input_type_name-img" type="text" name="firstname" placeholder="Название">
-        <input class="popup__input popup__input_type_link" type="link" name="description" placeholder="Ссылка на картинку">
+      <form class="popup__form popup__form_type_img" name="form-profile" novalidate>
+        <input class="popup__input popup__input_type_name-img" type="text" name="firstname" placeholder="Название" minlength="2" maxlength="30" required>
+        <input class="popup__input popup__input_type_link" type="link" name="description" placeholder="Ссылка на картинку" required>
         <button class="popup__button-save" type="submit">Создать</button>
       </form>
     </div>
@@ -69,6 +71,7 @@
     </li>
   </template>
   <script src="./scripts/initial-cards.js"></script>
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 </html>

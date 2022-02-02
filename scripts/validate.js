@@ -1,5 +1,4 @@
-// включение валидации вызовом enableValidation
-// все настройки передаются при вызове
+//настройки при вызове функции enableValidation
 enableValidation({
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -34,13 +33,12 @@ function toggleButton(form, { submitButtonSelector, inactiveButtonClass }) {
   
   const isFormValid = form.checkValidity();
   
-  
   if (isFormValid) {
     button.classList.remove(inactiveButtonClass);
-    button.removeAttribute('disabled')
+    button.removeAttribute('disabled');
   } else {
     button.classList.add(inactiveButtonClass);
-    button.setAttribute('disabled', true)
+    button.setAttribute('disabled', true);
   }
 
 }
@@ -64,6 +62,7 @@ function validateInput(form, input, classes) {
 
 //выбор форм и полей валидации с помощью forEach
 function enableValidation ({ formSelector, inputSelector, ...rest }) {
+  
   const forms = document.querySelectorAll(formSelector);
   
   forms.forEach(form => {
@@ -73,9 +72,7 @@ function enableValidation ({ formSelector, inputSelector, ...rest }) {
    
     inputs.forEach(input => {
       input.addEventListener('input', () => {
-        console.log('привет')
-        validateInput(form, input, rest)
-        
+        validateInput(form, input, rest);
       });
     });
 

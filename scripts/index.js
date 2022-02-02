@@ -100,7 +100,7 @@ function submitEditProfileForm (evt) {
 }
 
 popupOpenButtonEdit.addEventListener('click', openPopupEdit);
-popupCloseButtonEdit.addEventListener('click', () => {closePopup(popupEditProfile)});
+popupCloseButtonEdit.addEventListener('click', () => closePopup(popupEditProfile));
 popupFormEdit.addEventListener('submit', submitEditProfileForm);
 
 popupOpenButtonAdd.addEventListener('click', () => {
@@ -113,7 +113,7 @@ popupOpenButtonAdd.addEventListener('click', () => {
   
 });
 
-popupCloseButtonAdd.addEventListener('click', () => {closePopup(popupAddCard)});
+popupCloseButtonAdd.addEventListener('click', () => closePopup(popupAddCard));
 
 //fields gridBox
 const list = document.querySelector('.cards__items');
@@ -151,6 +151,7 @@ function openImage(evt) {
   popupImgField.src = evt.target.src;
   popupImgDescription.textContent = evt.target.alt;
   popupImgField.alt = evt.target.alt;
+  
   openPopup(popupImage);
 }
 
@@ -164,6 +165,7 @@ function delImage(evt) {
 
 function addImage(evt) {
   evt.preventDefault();
+  
   const card = createCard(popupNameImg.value, popupNameLink.value);
   
   addCard(card);

@@ -30,7 +30,6 @@ const popupImgDescription = document.querySelector('.popup__caption');
 
 //открытие попап профиля пользователя
 function openPopupEdit() {
-  
   popupUserName.value = profileUserName.textContent;
   popupUserDescription.value = profileDescription.textContent;
   
@@ -50,26 +49,27 @@ function closePopup(modal) {
   document.removeEventListener('keydown', closePopupEsc);
 }
 
+//закрытие попапа по нажатию на Esc
+function closePopupEsc(evt) {
+  if (evt.keyCode === 27 || evt.key === 'Escape') {
+    const openPopup = document.querySelector('.popup_opened');
+    
+    closePopup(openPopup);
+  };
+};
+
 //закрытие попапа при клике по оверлею 
 function closePopupOverlay(modal) {
   modal.addEventListener('click', (evt) => {
     if (evt.target === evt.currentTarget) {
+      
       closePopup(modal);
     };
   });
 };
 
-//закрытие попапа по нажатию на Esc
-function closePopupEsc(evt) {
-  if (evt.keyCode === 27 || evt.key === 'Escape') {
-    const openPopup = document.querySelector('.popup_opened');
-    closePopup(openPopup);
-  };
-};
-
 //убираем ошибки валидации после закрытия попапа  
 function hideErrorForm(form) {
-
   const inputs = form.querySelectorAll('.popup__input');
   const errors = form.querySelectorAll('.popup__input-error');
 
@@ -96,7 +96,6 @@ function submitEditProfileForm (evt) {
   profileDescription.textContent = popupUserDescription.value;
 
   closePopup(popupEditProfile);
-  
 }
 
 popupOpenButtonEdit.addEventListener('click', openPopupEdit);
@@ -106,11 +105,8 @@ popupFormEdit.addEventListener('submit', submitEditProfileForm);
 popupOpenButtonAdd.addEventListener('click', () => {
   
   openPopup(popupAddCard); 
-
   formReset(popupFormAdd); 
-  
   hideErrorForm(popupFormAdd);
-  
 });
 
 popupCloseButtonAdd.addEventListener('click', () => closePopup(popupAddCard));
@@ -169,9 +165,7 @@ function addImage(evt) {
   const card = createCard(popupNameImg.value, popupNameLink.value);
   
   addCard(card);
-  
   closePopup(popupAddCard);
-  
   formReset(popupFormAdd);
 };
 

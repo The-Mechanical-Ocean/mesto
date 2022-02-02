@@ -30,7 +30,6 @@ function hideError(input, errorContainer, { inputErrorClass, errorActiveClass })
 //состояние кнопки 
 function toggleButton(form, { submitButtonSelector, inactiveButtonClass }) {
   const button = form.querySelector(submitButtonSelector);
-  
   const isFormValid = form.checkValidity();
   
   if (isFormValid) {
@@ -40,12 +39,10 @@ function toggleButton(form, { submitButtonSelector, inactiveButtonClass }) {
     button.classList.add(inactiveButtonClass);
     button.setAttribute('disabled', true);
   }
-
 }
 
 //валидацияя инпутов с вызовом hide() или show()
 function validateInput(form, input, classes) {
-
   const errorContainer = form.querySelector(`#${input.id}-error`);
   
   if (input.validity.valid) {
@@ -56,13 +53,11 @@ function validateInput(form, input, classes) {
   }
 
   toggleButton(form, classes);
-  
 } 
 
 
 //выбор форм и полей валидации с помощью forEach
 function enableValidation ({ formSelector, inputSelector, ...rest }) {
-  
   const forms = document.querySelectorAll(formSelector);
   
   forms.forEach(form => {
@@ -78,5 +73,4 @@ function enableValidation ({ formSelector, inputSelector, ...rest }) {
 
     toggleButton(form, rest);
   });
-
 }

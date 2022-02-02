@@ -28,20 +28,67 @@ const profileDescription = document.querySelector('.profile__description');
 const popupImgField = document.querySelector('.popup__img');
 const popupImgDescription = document.querySelector('.popup__caption');
 
+//открытие попап профиля пользователя
 function openPopupEdit() {
+  
   popupUserName.value = profileUserName.textContent;
   popupUserDescription.value = profileDescription.textContent;
-
+  
   openPopup(popupEditProfile);
+  
 }
 
+//открытие и закрытие попапов
 function openPopup(modal) {
   modal.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
+  closePopupOverlay(modal);
 }
 
 function closePopup(modal) {
   modal.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEsc);
 }
+
+//закрытие попапа при клике по оверлею 
+function closePopupOverlay(modal) {
+  modal.addEventListener('click', (evt) => {
+    if (evt.target === evt.currentTarget) {
+      closePopup(modal);
+    };
+  });
+};
+
+//закрытие попапа по нажатию на Esc
+function closePopupEsc(evt) {
+  if (evt.keyCode === 27 || evt.key === 'Escape') {
+    const openPopup = document.querySelector('.popup_opened');
+    closePopup(openPopup);
+  };
+};
+
+//убираем ошибки валидации после закрытия попапа  
+function hideErrorForm(form) {
+
+  const inputs = form.querySelectorAll('.popup__input');
+  const errors = form.querySelectorAll('.popup__input-error');
+
+  inputs.forEach((input) => {
+    input.classList.remove('popup__input_type_error');
+  });
+
+  errors.forEach((errorContainer) =>{
+    errorContainer.classList.remove('popup__input-error_active');
+    errorContainer.textContent = '';
+  })
+};
+
+//сброс элементов формы
+function formReset(form) {
+  form.reset();
+}
+
+//обработчики событий
 function submitEditProfileForm (evt) {
   evt.preventDefault();
 
@@ -49,19 +96,27 @@ function submitEditProfileForm (evt) {
   profileDescription.textContent = popupUserDescription.value;
 
   closePopup(popupEditProfile);
+  
 }
 
 popupOpenButtonEdit.addEventListener('click', openPopupEdit);
-popupCloseButtonEdit.addEventListener('click', () => closePopup(popupEditProfile));
+popupCloseButtonEdit.addEventListener('click', () => {closePopup(popupEditProfile)});
 popupFormEdit.addEventListener('submit', submitEditProfileForm);
 
-popupOpenButtonAdd.addEventListener('click', () => openPopup(popupAddCard));
-popupCloseButtonAdd.addEventListener('click', () => closePopup(popupAddCard));
+popupOpenButtonAdd.addEventListener('click', () => {
+  openPopup(popupAddCard); 
+  formReset(popupFormAdd); 
+  hideErrorForm(popupFormAdd)
+  console.log(hideErrorForm(popupFormAdd));
+});
+
+popupCloseButtonAdd.addEventListener('click', () => {closePopup(popupAddCard)});
 
 //fields gridBox
 const list = document.querySelector('.cards__items');
 const cardTemplate = document.querySelector('.cards-template').content;
 
+//создание карточек
 function createCard(name, link){
   const cardElement = cardTemplate.cloneNode(true);
   const cardImg = cardElement.querySelector('.cards__img');
@@ -107,9 +162,12 @@ function delImage(evt) {
 function addImage(evt) {
   evt.preventDefault();
   const card = createCard(popupNameImg.value, popupNameLink.value);
+  
   addCard(card);
+  
   closePopup(popupAddCard);
-  popupFormAdd.reset();
+  
+  formReset(popupFormAdd);
 };
 
 popupCloseButtonImage.addEventListener('click', () => closePopup(popupImage));

@@ -38,7 +38,7 @@
         <span class="popup__input-error popup__input-error_active" id="firstname-error"></span>
         <input class="popup__input popup__input_type_job" type="text" name="description" id="description" placeholder="Описание" minlength="2" maxlength="200" required>
         <span class="popup__input-error popup__input-error_active" id="description-error"></span>
-        <button class="popup__button-save popup__button-save_inactive" type="submit" disabled="">Сохранить</button>
+        <button class="popup__button-save " type="submit">Сохранить</button>
       </form>
     </div>
   </div>
@@ -49,9 +49,9 @@
       <form class="popup__form popup__form_type_img" name="form-profile" novalidate>
         <input class="popup__input popup__input_type_name-img " type="text" name="name-img" id="img" placeholder="Название" minlength="2" maxlength="30" required>
         <span class="popup__input-error popup__input-error_active" id="img-error"></span>
-        <input class="popup__input popup__input_type_link " type="link" name="link-img" id="link" placeholder="Ссылка на картинку" required>
+        <input class="popup__input popup__input_type_link" type="url" name="link-img" id="link" placeholder="Ссылка на картинку" required>
         <span class="popup__input-error popup__input-error_active" id="link-error"></span>
-        <button class="popup__button-save popup__button-save_inactive" type="submit">Создать</button>
+        <button class="popup__button-save " type="submit">Создать</button>
       </form>
     </div>
   </div>
@@ -73,7 +73,8 @@
     </li>
   </template>
   <script src="./scripts/initial-cards.js"></script>
-  <script src="./scripts/index.js"></script>
   <script src="./scripts/validate.js"></script>
+  <script src="./scripts/index.js"></script>
+  
 </body>
 </html>

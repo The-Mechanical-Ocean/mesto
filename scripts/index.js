@@ -13,6 +13,7 @@ const popupOpenButtonAdd =  document.querySelector('.profile__button-add');
 const popupCloseButtonEdit = popupEditProfile.querySelector('.popup__button-close_type_edit');
 const popupCloseButtonAdd =  popupAddCard.querySelector('.popup__button-close_type_add-card');
 const popupCloseButtonImage = popupImage.querySelector('.popup__button-close_type_img-card');
+const buttonSaveAdd = popupFormAdd.querySelector('.popup__button-save');
 
 //popup input's
 const popupUserName = document.querySelector('.popup__input_type_name');
@@ -32,7 +33,7 @@ const popupImgDescription = document.querySelector('.popup__caption');
 function openPopupEdit() {
   popupUserName.value = profileUserName.textContent;
   popupUserDescription.value = profileDescription.textContent;
-  
+
   openPopup(popupEditProfile);
   hideErrorForm(popupFormEdit);
 }
@@ -41,7 +42,6 @@ function openPopupEdit() {
 function openPopup(modal) {
   modal.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
-  closePopupOverlay(modal);
 }
 
 function closePopup(modal) {
@@ -53,40 +53,10 @@ function closePopup(modal) {
 function closePopupEsc(evt) {
   if (evt.keyCode === 27 || evt.key === 'Escape') {
     const openPopup = document.querySelector('.popup_opened');
-    
+
     closePopup(openPopup);
   };
 };
-
-//закрытие попапа при клике по оверлею 
-function closePopupOverlay(modal) {
-  modal.addEventListener('click', (evt) => {
-    if (evt.target === evt.currentTarget) {
-      
-      closePopup(modal);
-    };
-  });
-};
-
-//убираем ошибки валидации после закрытия попапа  
-function hideErrorForm(form) {
-  const inputs = form.querySelectorAll('.popup__input');
-  const errors = form.querySelectorAll('.popup__input-error');
-
-  inputs.forEach((input) => {
-    input.classList.remove('popup__input_type_error');
-  });
-
-  errors.forEach((errorContainer) =>{
-    errorContainer.classList.remove('popup__input-error_active');
-    errorContainer.textContent = '';
-  })
-};
-
-//сброс элементов формы
-function formReset(form) {
-  form.reset();
-}
 
 //обработчики событий
 function submitEditProfileForm (evt) {
@@ -100,16 +70,29 @@ function submitEditProfileForm (evt) {
 
 popupOpenButtonEdit.addEventListener('click', openPopupEdit);
 popupCloseButtonEdit.addEventListener('click', () => closePopup(popupEditProfile));
+//закрытие popupEdit overlay
+popupEditProfile.addEventListener('click', (evt) => {
+  if (evt.target === evt.currentTarget) {
+    closePopup(popupEditProfile);
+  };
+});
 popupFormEdit.addEventListener('submit', submitEditProfileForm);
 
 popupOpenButtonAdd.addEventListener('click', () => {
-  
-  openPopup(popupAddCard); 
-  formReset(popupFormAdd); 
+  openPopup(popupAddCard);
+  popupFormAdd.reset();
   hideErrorForm(popupFormAdd);
+  buttonSaveAdd.classList.add('popup__button-save_inactive');
+  buttonSaveAdd.setAttribute('disabled', true);
 });
 
 popupCloseButtonAdd.addEventListener('click', () => closePopup(popupAddCard));
+//закрытие popupAdd overlay
+popupAddCard.addEventListener('click', (evt) => {
+  if (evt.target === evt.currentTarget) {
+    closePopup(popupAddCard);
+  };
+});
 
 //fields gridBox
 const list = document.querySelector('.cards__items');
@@ -147,7 +130,7 @@ function openImage(evt) {
   popupImgField.src = evt.target.src;
   popupImgDescription.textContent = evt.target.alt;
   popupImgField.alt = evt.target.alt;
-  
+
   openPopup(popupImage);
 }
 
@@ -161,13 +144,20 @@ function delImage(evt) {
 
 function addImage(evt) {
   evt.preventDefault();
-  
+
   const card = createCard(popupNameImg.value, popupNameLink.value);
-  
+
   addCard(card);
   closePopup(popupAddCard);
-  formReset(popupFormAdd);
+  popupFormAdd.reset();
+
 };
 
 popupCloseButtonImage.addEventListener('click', () => closePopup(popupImage));
+//закрытие popupImage overlay
+popupImage.addEventListener('click', (evt) => {
+  if (evt.target === evt.currentTarget) {
+    closePopup(popupImage);
+  };
+});
 popupFormAdd.addEventListener('submit', addImage);

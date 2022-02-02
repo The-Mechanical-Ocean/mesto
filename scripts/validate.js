@@ -7,7 +7,7 @@ enableValidation({
   inactiveButtonClass: 'popup__button-save_inactive',
   inputErrorClass: 'popup__input_type_error',
   errorClass: '.popup__input-error',
-  errorActiveClass: '.popup__input-error_active'
+  errorActiveClass: 'popup__input-error_active'
 });
 
 function submitForm(evt) {
@@ -47,7 +47,7 @@ function toggleButton(form, { submitButtonSelector, inactiveButtonClass }) {
 
 //валидацияя инпутов с вызовом hide() или show()
 function validateInput(form, input, classes) {
-  
+
   const errorContainer = form.querySelector(`#${input.id}-error`);
   
   if (input.validity.valid) {
@@ -73,7 +73,9 @@ function enableValidation ({ formSelector, inputSelector, ...rest }) {
    
     inputs.forEach(input => {
       input.addEventListener('input', () => {
+        console.log('привет')
         validateInput(form, input, rest)
+        
       });
     });
 

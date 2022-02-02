@@ -4,8 +4,8 @@ const popupEditProfile = document.querySelector('.popup_type_edit');
 const popupImage = document.querySelector('.popup_type_image');
 
 //popup form's
-const popupFormEdit = popupEditProfile.querySelector('.popup__container_type_edit');
-const popupFormAdd = popupAddCard.querySelector('.popup__container_type_add-card');
+const popupFormEdit = popupEditProfile.querySelector('.popup__form');
+const popupFormAdd = popupAddCard.querySelector('.popup__form');
 
 //button
 const popupOpenButtonEdit = document.querySelector('.profile__button-edit');
@@ -35,7 +35,7 @@ function openPopupEdit() {
   popupUserDescription.value = profileDescription.textContent;
   
   openPopup(popupEditProfile);
-  
+  hideErrorForm(popupFormEdit);
 }
 
 //открытие и закрытие попапов
@@ -104,10 +104,13 @@ popupCloseButtonEdit.addEventListener('click', () => {closePopup(popupEditProfil
 popupFormEdit.addEventListener('submit', submitEditProfileForm);
 
 popupOpenButtonAdd.addEventListener('click', () => {
+  
   openPopup(popupAddCard); 
+
   formReset(popupFormAdd); 
-  hideErrorForm(popupFormAdd)
-  console.log(hideErrorForm(popupFormAdd));
+  
+  hideErrorForm(popupFormAdd);
+  
 });
 
 popupCloseButtonAdd.addEventListener('click', () => {closePopup(popupAddCard)});

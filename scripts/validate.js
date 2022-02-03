@@ -1,5 +1,5 @@
 //настройки при вызове функции enableValidation
-enableValidation({
+const config = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button-save',
@@ -7,71 +7,66 @@ enableValidation({
   inputErrorClass: 'popup__input_type_error',
   errorClass: '.popup__input-error',
   errorActiveClass: 'popup__input-error_active'
-});
+}
 
 function submitForm(evt) {
   evt.preventDefault();
 }
 
 //добавление ошибки
-function showError(input, errorContainer, { inputErrorClass, errorActiveClass }) {
-  input.classList.add(inputErrorClass);
-  errorContainer.classList.add(errorActiveClass);
+function showError(input, errorContainer, config) {
+  input.classList.add(config.inputErrorClass);
+  errorContainer.classList.add(config.errorActiveClass);
   errorContainer.textContent = input.validationMessage;
 }
 
 //скрытие ошибки
-function hideError(input, errorContainer, { inputErrorClass, errorActiveClass }) {
-  input.classList.remove(inputErrorClass);
-  errorContainer.classList.remove(errorActiveClass);
+function hideError(input, errorContainer, config) {
+  input.classList.remove(config.inputErrorClass);
+  errorContainer.classList.remove(config.errorActiveClass);
   errorContainer.textContent = '';
 }
 
 //состояние кнопки
-function toggleButton(form, { submitButtonSelector, inactiveButtonClass }) {
-  const button = form.querySelector(submitButtonSelector);
+function toggleButton(form, config) {
+  const button = form.querySelector(config.submitButtonSelector);
   const isFormValid = form.checkValidity();
 
   if (isFormValid) {
-    button.classList.remove(inactiveButtonClass);
+    button.classList.remove(config.inactiveButtonClass);
     button.removeAttribute('disabled');
   } else {
-    button.classList.add(inactiveButtonClass);
+    button.classList.add(config.inactiveButtonClass);
     button.setAttribute('disabled', true);
   }
 }
 
 //валидацияя инпутов с вызовом hide() или show()
-function validateInput(form, input, classes) {
+function validateInput(form, input, config) {
   const errorContainer = form.querySelector(`#${input.id}-error`);
 
   if (input.validity.valid) {
-    hideError(input, errorContainer, classes);
+    hideError(input, errorContainer, config);
 
   } else {
-    showError(input, errorContainer, classes);
+    showError(input, errorContainer, config);
   }
 
-  toggleButton(form, classes);
+  toggleButton(form, config);
 }
 
 //убираем ошибки валидации после закрытия попапа
-function hideErrorForm(form) {
-  const inputs = form.querySelectorAll('.popup__input');
-  const errors = form.querySelectorAll('.popup__input-error');
+function hideErrorForm(form, config) {
+  const inputs = form.querySelectorAll(config.inputSelector);
+  const errors = form.querySelectorAll(config.errorClass);
 
   inputs.forEach((input) => {
-    input.classList.remove('popup__input_type_error');
+    errors.forEach((error) => hideError(input, error, config));
   });
+}
 
-  errors.forEach((errorContainer) =>{
-    errorContainer.classList.remove('popup__input-error_active');
-    errorContainer.textContent = '';
-  })
-};
-
-//выбор форм и полей валидации с помощью forEach
-function enableValidation ({ formSelector, inputSelector, ...rest }) {
+//выбираем формы и поля для валидации
+function enableValidation({ formSelector, inputSelector, ...rest }) {
   const forms = document.querySelectorAll(formSelector);
 
   forms.forEach(form => {
@@ -88,3 +83,5 @@ function enableValidation ({ formSelector, inputSelector, ...rest }) {
     toggleButton(form, rest);
   });
 }
+
+enableValidation(config);

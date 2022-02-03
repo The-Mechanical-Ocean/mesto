@@ -13,7 +13,6 @@ const popupOpenButtonAdd =  document.querySelector('.profile__button-add');
 const popupCloseButtonEdit = popupEditProfile.querySelector('.popup__button-close_type_edit');
 const popupCloseButtonAdd =  popupAddCard.querySelector('.popup__button-close_type_add-card');
 const popupCloseButtonImage = popupImage.querySelector('.popup__button-close_type_img-card');
-const buttonSaveAdd = popupFormAdd.querySelector('.popup__button-save');
 
 //popup input's
 const popupUserName = document.querySelector('.popup__input_type_name');
@@ -35,7 +34,7 @@ function openPopupEdit() {
   popupUserDescription.value = profileDescription.textContent;
 
   openPopup(popupEditProfile);
-  hideErrorForm(popupFormEdit);
+  hideErrorForm(popupFormEdit, config);
 }
 
 //открытие и закрытие попапов
@@ -81,9 +80,8 @@ popupFormEdit.addEventListener('submit', submitEditProfileForm);
 popupOpenButtonAdd.addEventListener('click', () => {
   openPopup(popupAddCard);
   popupFormAdd.reset();
-  hideErrorForm(popupFormAdd);
-  buttonSaveAdd.classList.add('popup__button-save_inactive');
-  buttonSaveAdd.setAttribute('disabled', true);
+  hideErrorForm(popupFormAdd, config);
+  toggleButton(popupFormAdd, config);
 });
 
 popupCloseButtonAdd.addEventListener('click', () => closePopup(popupAddCard));

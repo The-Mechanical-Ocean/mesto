@@ -1,3 +1,16 @@
+import {initialCards} from './initial-cards.js';
+import {Validate} from './Validate.js';
+
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button-save',
+  inactiveButtonClass: 'popup__button-save_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: '.popup__input-error',
+  errorActiveClass: 'popup__input-error_active'
+}
+
 //popup menu
 const popupAddCard = document.querySelector('.popup_type_add-card');
 const popupEditProfile = document.querySelector('.popup_type_edit');
@@ -28,13 +41,15 @@ const profileDescription = document.querySelector('.profile__description');
 const popupImgField = document.querySelector('.popup__img');
 const popupImgDescription = document.querySelector('.popup__caption');
 
+
+
 //открытие попап профиля пользователя
 function openPopupEdit() {
   popupUserName.value = profileUserName.textContent;
   popupUserDescription.value = profileDescription.textContent;
 
   openPopup(popupEditProfile);
-  hideErrorForm(popupFormEdit, config);
+  formEditValidation.hideErrorForm();
 }
 
 //открытие и закрытие попапов
@@ -80,8 +95,8 @@ popupFormEdit.addEventListener('submit', submitEditProfileForm);
 popupOpenButtonAdd.addEventListener('click', () => {
   openPopup(popupAddCard);
   popupFormAdd.reset();
-  hideErrorForm(popupFormAdd, config);
-  toggleButton(popupFormAdd, config);
+  formAddValidation.hideErrorForm();
+  formAddValidation.toggleButton();
 });
 
 popupCloseButtonAdd.addEventListener('click', () => closePopup(popupAddCard));
@@ -159,3 +174,11 @@ popupImage.addEventListener('click', (evt) => {
   };
 });
 popupFormAdd.addEventListener('submit', addImage);
+
+
+// On validation
+const formEditValidation = new Validate(popupFormEdit, config)
+formEditValidation.enableValidation();
+
+const formAddValidation = new Validate(popupFormAdd, config)
+formAddValidation.enableValidation();

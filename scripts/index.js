@@ -1,5 +1,7 @@
 import {initialCards} from './initial-cards.js';
+import {Card} from './Card.js';
 import {Validate} from './Validate.js';
+
 
 const config = {
   formSelector: '.popup__form',
@@ -14,7 +16,7 @@ const config = {
 //popup menu
 const popupAddCard = document.querySelector('.popup_type_add-card');
 const popupEditProfile = document.querySelector('.popup_type_edit');
-const popupImage = document.querySelector('.popup_type_image');
+export const popupImage = document.querySelector('.popup_type_image');
 
 //popup form's
 const popupFormEdit = popupEditProfile.querySelector('.popup__form');
@@ -38,10 +40,15 @@ const profileUserName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
 //new fields
-const popupImgField = document.querySelector('.popup__img');
-const popupImgDescription = document.querySelector('.popup__caption');
+export const popupImgField = document.querySelector('.popup__img');
+export const popupImgDescription = document.querySelector('.popup__caption');
 
+// On validation
+const formEditValidation = new Validate(popupFormEdit, config)
+formEditValidation.enableValidation();
 
+const formAddValidation = new Validate(popupFormAdd, config)
+formAddValidation.enableValidation();
 
 //открытие попап профиля пользователя
 function openPopupEdit() {
@@ -53,7 +60,7 @@ function openPopupEdit() {
 }
 
 //открытие и закрытие попапов
-function openPopup(modal) {
+export function openPopup(modal) {
   modal.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
 }
@@ -109,56 +116,22 @@ popupAddCard.addEventListener('click', (evt) => {
 
 //fields gridBox
 const list = document.querySelector('.cards__items');
-const cardTemplate = document.querySelector('.cards-template').content;
 
-//создание карточек
-function createCard(name, link){
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImg = cardElement.querySelector('.cards__img');
-  const cardText = cardElement.querySelector('.cards__text');
-  const buttonLike = cardElement.querySelector('.cards__button-like');
-  const buttonDel = cardElement.querySelector('.cards__button-del');
-
-  cardText.textContent = name;
-  cardImg.src = link;
-  cardImg.alt = name;
-
-  cardImg.addEventListener('click', openImage);
-  buttonLike.addEventListener('click', like);
-  buttonDel.addEventListener('click', delImage);
-
-  return cardElement;
-};
-
-function addCard(cardElement){
-  list.prepend(cardElement);
+function addCard(cardItem){
+  list.prepend(cardItem);
 };
 
 initialCards.forEach(cardElement => {
-  const card = createCard(cardElement.name, cardElement.link);
-  addCard(card);
+  const card = new Card (cardElement.name, cardElement.link, '.cards-template');
+  const cardItem = card.createCard();
+  addCard(cardItem);
 });
-
-function openImage(evt) {
-  popupImgField.src = evt.target.src;
-  popupImgDescription.textContent = evt.target.alt;
-  popupImgField.alt = evt.target.alt;
-
-  openPopup(popupImage);
-}
-
-function like(evt) {
-  evt.target.classList.toggle('cards__button-like_active');
-}
-
-function delImage(evt) {
-  evt.target.closest('.cards__item').remove();
-};
 
 function addImage(evt) {
   evt.preventDefault();
+  const card = (popupNameImg.value, popupNameLink.value);
 
-  const card = createCard(popupNameImg.value, popupNameLink.value);
+  // const card = {name:popupNameImg.value, link:popupNameLink.value};
 
   addCard(card);
   closePopup(popupAddCard);
@@ -176,9 +149,3 @@ popupImage.addEventListener('click', (evt) => {
 popupFormAdd.addEventListener('submit', addImage);
 
 
-// On validation
-const formEditValidation = new Validate(popupFormEdit, config)
-formEditValidation.enableValidation();
-
-const formAddValidation = new Validate(popupFormAdd, config)
-formAddValidation.enableValidation();

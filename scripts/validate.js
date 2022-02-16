@@ -9,7 +9,7 @@ export class Validate {
     this._errorActiveClass = config._errorActiveClass;
   }
 
-  submitForm(evt) {
+  _submitForm(evt) {
     evt.preventDefault();
   }
 
@@ -65,9 +65,8 @@ export class Validate {
     });
   }
 
-
   enableValidation = () => {
-    this._form.addEventListener('submit', this.submitForm);
+    this._form.addEventListener('submit', this._submitForm);
     this._inputs = this._form.querySelectorAll(this._inputSelector);
 
     this._inputs.forEach(input => {
@@ -77,7 +76,6 @@ export class Validate {
     });
 
     this.toggleButton();
-
   }
 
 }

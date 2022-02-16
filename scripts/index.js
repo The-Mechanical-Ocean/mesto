@@ -2,7 +2,6 @@ import {initialCards} from './initial-cards.js';
 import {Card} from './Card.js';
 import {Validate} from './Validate.js';
 
-
 const config = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -42,6 +41,9 @@ const profileDescription = document.querySelector('.profile__description');
 //new fields
 export const popupImgField = document.querySelector('.popup__img');
 export const popupImgDescription = document.querySelector('.popup__caption');
+
+//fields gridBox
+const list = document.querySelector('.cards__items');
 
 // On validation
 const formEditValidation = new Validate(popupFormEdit, config)
@@ -114,30 +116,32 @@ popupAddCard.addEventListener('click', (evt) => {
   };
 });
 
-//fields gridBox
-const list = document.querySelector('.cards__items');
+//выбор карточек из массива
+initialCards.forEach(cardElement => {
+  makeCard(cardElement);
+});
 
+//добавление готовой карточки в dom
 function addCard(cardItem){
   list.prepend(cardItem);
 };
 
-initialCards.forEach(cardElement => {
+//создание карточек
+function makeCard (cardElement){
   const card = new Card (cardElement.name, cardElement.link, '.cards-template');
   const cardItem = card.createCard();
   addCard(cardItem);
-});
+}
 
+//добавление карточек по url
 function addImage(evt) {
   evt.preventDefault();
-  const card = (popupNameImg.value, popupNameLink.value);
 
-  // const card = {name:popupNameImg.value, link:popupNameLink.value};
+  makeCard(({name:popupNameImg.value, link:popupNameLink.value}));
 
-  addCard(card);
   closePopup(popupAddCard);
   popupFormAdd.reset();
-
-};
+}
 
 popupCloseButtonImage.addEventListener('click', () => closePopup(popupImage));
 //закрытие popupImage overlay
@@ -147,5 +151,3 @@ popupImage.addEventListener('click', (evt) => {
   };
 });
 popupFormAdd.addEventListener('submit', addImage);
-
-

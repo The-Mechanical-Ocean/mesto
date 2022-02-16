@@ -1,6 +1,6 @@
 import {initialCards} from './initial-cards.js';
 import {Card} from './Card.js';
-import {Validate} from './Validate.js';
+import {Validate} from './validate.js';
 
 const config = {
   formSelector: '.popup__form',

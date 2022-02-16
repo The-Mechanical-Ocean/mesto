@@ -2,7 +2,7 @@ export class Validate {
   constructor (form, config) {
     this._form = form;
     this._inputSelector = config.inputSelector;
-    this._submitButtonSelector = config.submitButtonSelector;
+    this._submitButton = config.submitButtonSelector;
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
@@ -29,15 +29,15 @@ export class Validate {
 
   //состояние кнопки
   toggleButton() {
-    const button = this._form.querySelector(this._submitButtonSelector);
+    this._button = this._form.querySelector(this._submitButton);
     const isFormValid = this._form.checkValidity();
 
     if (isFormValid) {
-      button.classList.remove(this._inactiveButtonClass);
-      button.removeAttribute('disabled');
+      this._button.classList.remove(this._inactiveButtonClass);
+      this._button.removeAttribute('disabled');
     } else {
-      button.classList.add(this._inactiveButtonClass);
-      button.setAttribute('disabled', true);
+      this._button.classList.add(this._inactiveButtonClass);
+      this._button.setAttribute('disabled', true);
     }
   }
 
@@ -57,21 +57,20 @@ export class Validate {
 
   //убираем ошибки валидации после закрытия попапа
   hideErrorForm() {
-    const inputs = this._form.querySelectorAll(this._inputSelector);
-    const errors = this._form.querySelectorAll(this._errorClass);
+    this._inputs = this._form.querySelectorAll(this._inputSelector);
+    this._errors = this._form.querySelectorAll(this._errorClass);
 
-    inputs.forEach((input) => {
-      errors.forEach((error) => this._hideError(input, error));
+    this._inputs.forEach((input) => {
+      this._errors.forEach((error) => this._hideError(input, error));
     });
   }
 
 
   enableValidation = () => {
     this._form.addEventListener('submit', this.submitForm);
+    this._inputs = this._form.querySelectorAll(this._inputSelector);
 
-    const inputs = this._form.querySelectorAll(this._inputSelector);
-
-    inputs.forEach(input => {
+    this._inputs.forEach(input => {
       input.addEventListener('input', () => {
         this._validateInput(input);
       });

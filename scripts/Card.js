@@ -12,7 +12,7 @@ export class Card {
   }
 
   _delImage = () => {
-    this._cardElement.closest('.cards__item').remove();
+    this._buttonDel.closest('.cards__item').remove();
   }
 
   _openImage = () => {

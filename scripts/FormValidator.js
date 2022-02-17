@@ -44,13 +44,13 @@ export class FormValidator {
 
   //валидацияя инпутов с вызовом hide() или show()
   _validateInput(input) {
-    this._errorContainer = this._form.querySelector(`#${input.id}-error`);
+    const errorContainer = this._form.querySelector(`#${input.id}-error`);
 
     if (input.validity.valid) {
-      this._hideError(input, this._errorContainer);
+      this._hideError(input, errorContainer);
 
     } else {
-      this._showError(input, this._errorContainer);
+      this._showError(input, errorContainer);
     }
 
     this.toggleButton();
@@ -59,7 +59,8 @@ export class FormValidator {
   //убираем ошибки валидации после закрытия попапа
   hideErrorForm() {
     this._inputs.forEach((input) => {
-      this._hideError(input, this._errorContainer)
+      const errorContainer = this._form.querySelector(`#${input.id}-error`);
+      this._hideError(input, errorContainer)
     });
   }
 

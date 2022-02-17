@@ -1,4 +1,4 @@
-export class Validate {
+export class FormValidator {
   constructor (form, config) {
     this._form = form;
     this._inputSelector = config.inputSelector;
@@ -7,6 +7,7 @@ export class Validate {
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
     this._errorActiveClass = config._errorActiveClass;
+    this._button = this._form.querySelector(this._submitButton);
   }
 
   _submitForm(evt) {
@@ -29,7 +30,7 @@ export class Validate {
 
   //состояние кнопки
   toggleButton() {
-    this._button = this._form.querySelector(this._submitButton);
+
     const isFormValid = this._form.checkValidity();
 
     if (isFormValid) {
@@ -43,13 +44,13 @@ export class Validate {
 
   //валидацияя инпутов с вызовом hide() или show()
   _validateInput(input) {
-    const errorContainer = this._form.querySelector(`#${input.id}-error`);
+    this._errorContainer = this._form.querySelector(`#${input.id}-error`);
 
     if (input.validity.valid) {
-      this._hideError(input, errorContainer);
+      this._hideError(input, this._errorContainer);
 
     } else {
-      this._showError(input, errorContainer);
+      this._showError(input, this._errorContainer);
     }
 
     this.toggleButton();
@@ -57,11 +58,8 @@ export class Validate {
 
   //убираем ошибки валидации после закрытия попапа
   hideErrorForm() {
-    this._inputs = this._form.querySelectorAll(this._inputSelector);
-    this._errors = this._form.querySelectorAll(this._errorClass);
-
     this._inputs.forEach((input) => {
-      this._errors.forEach((error) => this._hideError(input, error));
+      this._hideError(input, this._errorContainer)
     });
   }
 

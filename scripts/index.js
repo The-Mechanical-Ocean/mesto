@@ -1,6 +1,6 @@
 import {initialCards} from './initial-cards.js';
 import {Card} from './Card.js';
-import {Validate} from './validate.js';
+import {FormValidator} from './FormValidator.js';
 
 const config = {
   formSelector: '.popup__form',
@@ -46,10 +46,10 @@ export const popupImgDescription = document.querySelector('.popup__caption');
 const list = document.querySelector('.cards__items');
 
 // On validation
-const formEditValidation = new Validate(popupFormEdit, config)
+const formEditValidation = new FormValidator(popupFormEdit, config)
 formEditValidation.enableValidation();
 
-const formAddValidation = new Validate(popupFormAdd, config)
+const formAddValidation = new FormValidator(popupFormAdd, config)
 formAddValidation.enableValidation();
 
 //открытие попап профиля пользователя

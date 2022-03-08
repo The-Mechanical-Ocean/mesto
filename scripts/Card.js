@@ -1,10 +1,9 @@
-import {openPopup, popupImage, popupImgField, popupImgDescription} from './index.js'
-
 export class Card {
-  constructor(name, link, cardTemplateSelector) {
+  constructor(name, link, cardTemplateSelector, { cardClick }) {
     this._name = name;
     this._link = link;
     this._template = document.querySelector(cardTemplateSelector).content;
+    this._cardClick = cardClick;
   }
 
   _like = () => {
@@ -13,14 +12,6 @@ export class Card {
 
   _delImage = () => {
     this._buttonDel.closest('.cards__item').remove();
-  }
-
-  _openImage = () => {
-    popupImgField.src = this._link;
-    popupImgDescription.textContent = this._name;
-    popupImgField.alt = this._name;
-
-    openPopup(popupImage);
   }
 
   createCard = () => {
@@ -40,7 +31,7 @@ export class Card {
   }
 
   _setEventListeners() {
-    this._cardImg.addEventListener('click', this._openImage);
+    this._cardImg.addEventListener('click', () => { this._cardClick(this._name, this._link) });
     this._buttonLike.addEventListener('click', this._like);
     this._buttonDel.addEventListener('click', this._delImage);
   }

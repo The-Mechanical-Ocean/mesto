@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "Проект представляет собой одностраничный сайт, с возможностью добавления профиля пользователя. На данный момент сайт несет информационный характер об уникальных местах нашей необъятной страны.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/The-Mechanical-Ocean/mesto.git"
+  },
+  "author": "Alexanser Kudrin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/The-Mechanical-Ocean/mesto/issues"
+  },
+  "homepage": "https://github.com/The-Mechanical-Ocean/mesto#readme"
+}

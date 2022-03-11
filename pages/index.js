@@ -1,21 +1,23 @@
-import {Card} from './Card.js';
-import {FormValidator} from './FormValidator.js';
-import {Section} from './Section.js';
-import {UserInfo} from './UserInfo.js';
-import {PopupWithForm} from './PopupWithForm.js';
-import {PopupWithImage} from './PopupWithImage.js';
-import { initialCards, config, popupFormEdit, profileName, profileDescription, popupFormAdd, popupOpenButtonEdit, popupOpenButtonAdd, list} from './utils.js';
+import {Card} from '../components/Card.js';
+import {FormValidator} from '../components/FormValidator.js';
+import {Section} from '../components/Section.js';
+import {UserInfo} from '../components/UserInfo.js';
+import {PopupWithForm} from '../components/PopupWithForm.js';
+import {PopupWithImage} from '../components/PopupWithImage.js';
+import { initialCards, config, popupFormEdit, popupFormAdd, popupEditProfile, popupAddCard,  popupImage, profileName,
+profileDescription, popupOpenButtonEdit, popupOpenButtonAdd, list} from '../utils/constants.js';
 
 const profileInfo = new UserInfo(profileName, profileDescription);
-const imgPopup = new PopupWithImage('.popup_type_image');
-// On validation
+const imgPopup = new PopupWithImage(popupImage);
 const formEditValidation = new FormValidator(popupFormEdit, config);
-formEditValidation.enableValidation();
 const formAddValidation = new FormValidator(popupFormAdd, config);
+
+// On validation
+formEditValidation.enableValidation();
 formAddValidation.enableValidation();
 
 //popup profile
-const popupEdit = new PopupWithForm('.popup_type_edit', {
+const popupEdit = new PopupWithForm(popupEditProfile, {
   submitForm: (data) => {
     profileInfo.setUserInfo(data.firstname, data.description);
 
@@ -26,12 +28,12 @@ const popupEdit = new PopupWithForm('.popup_type_edit', {
 popupOpenButtonEdit.addEventListener("click", function() {
   popupEdit.open();
 
-    const profileDescription = profileInfo.getUserInfo();
+  const profileDescription = profileInfo.getUserInfo();
 
-    firstname.value = profileDescription.name;
-    description.value = profileDescription.description;
+  firstname.value = profileDescription.name;
+  description.value = profileDescription.description;
 
-    formEditValidation.hideErrorForm();
+  formEditValidation.hideErrorForm();
 });
 
 //popup addCard
@@ -39,9 +41,10 @@ popupOpenButtonAdd.addEventListener("click", () => {
   addCard.open();
   formAddValidation.hideErrorForm();
   formAddValidation.toggleButton();
+  console.log(formAddValidation.toggleButton());
 });
 
-const addCard = new PopupWithForm('.popup_type_add-card', {
+const addCard = new PopupWithForm(popupAddCard, {
   submitForm: (data) => {
     const newCardInfo = {
       link: data['link-img'],
@@ -51,7 +54,6 @@ const addCard = new PopupWithForm('.popup_type_add-card', {
     makeCard(newCardInfo);
     addCard.close();
   }
-
 });
 
 //создание карточек
@@ -68,10 +70,8 @@ function makeCard (cardElement){
 //Вставка карточек
 const defaultCardsList = new Section({
   items: initialCards,
-  renderer: (item) => {
-    makeCard (item)
-  }
+  renderer: (item) => { makeCard (item) }
   },
   list
-  );
+);
 defaultCardsList.renderedItems();

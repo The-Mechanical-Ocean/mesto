@@ -1,10 +1,12 @@
-export default class Popup {
+export class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
+
   }
 
   //открытие и закрытие попапов
   open() {
+    console.log('open');
   this._popup.classList.add('popup_opened');
   this.setEventListeners();
   }
@@ -35,6 +37,7 @@ export default class Popup {
 
   //слушатели и обработчики
   setEventListeners() {
+    console.log('popupSetEventListeners')
     document.addEventListener('keydown', this._handleEscClose);
     document.addEventListener('click', this._closeOverlay);
     this._popup.addEventListener('click', this._closeButton);

@@ -4,7 +4,7 @@
   "description": "Проект представляет собой одностраничный сайт, с возможностью добавления профиля пользователя. На данный момент сайт несет информационный характер об уникальных местах нашей необъятной страны.",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode=production",
+    "build": "webpack --mode production",
     "dev": "webpack serve"
   },
   "repository": {

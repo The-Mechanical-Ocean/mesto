@@ -27,16 +27,16 @@ module.exports = {
       {
         test: /\.(woff(2)?|eot|ttf|otf)$/i,
         type: 'asset/resource',
-        generator: {
-          filname: 'fonts/[name].[hash][ext]',
-        }
+        // generator: {
+        //   filname: 'fonts/[name].[hash][ext]',
+        // }
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
         type: 'asset/resource',
-        generator: {
-          filname: 'images/[name].[hash][ext]',
-        }
+        // generator: {
+        //   filname: 'images/[name].[hash][ext]',
+        // }
       },
       {
         test: /\.css$/,

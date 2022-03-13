@@ -16,7 +16,7 @@ export class Popup {
 
   //закрытие попапа по нажатию на Esc, Overlay, buttonClose
   _handleEscClose = (evt) => {
-    if (evt.keyCode === 27 || evt.key === 'Escape') {
+    if (evt.key === 'Escape') {
       this.close();
     }
   }

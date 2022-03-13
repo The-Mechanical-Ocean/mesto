@@ -11,11 +11,11 @@ export class Card {
   }
 
   _delImage = () => {
-    this._buttonDel.closest('.cards__item').remove();
+    this._cardElement.remove();
   }
 
   createCard = () => {
-    this._cardElement = this._template.cloneNode(true);
+    this._cardElement = this._template.querySelector('.cards__item').cloneNode(true);
     this._cardImg = this._cardElement.querySelector('.cards__img');
     this._cardText = this._cardElement.querySelector('.cards__text');
     this._buttonLike = this._cardElement.querySelector('.cards__button-like');

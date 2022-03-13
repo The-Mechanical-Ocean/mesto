@@ -36,9 +36,9 @@ export const config = {
 }
 
 //popup menu
-export const popupAddCard = '.popup_type_add-card';
-export const popupEditProfile = '.popup_type_edit';
-export const popupImage = '.popup_type_image';
+export const popupAddCardSelector = '.popup_type_add-card';
+export const popupEditProfileSelector = '.popup_type_edit';
+export const popupImageSelector = '.popup_type_image';
 
 //popup form's
 export const popupFormEdit = document.querySelector('.popup__form_type_edit-profile');

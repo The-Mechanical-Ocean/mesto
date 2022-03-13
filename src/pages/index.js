@@ -5,11 +5,11 @@ import {Section} from '../components/Section.js';
 import {UserInfo} from '../components/UserInfo.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
 import {PopupWithImage} from '../components/PopupWithImage.js';
-import { initialCards, config, popupFormEdit, popupFormAdd, popupEditProfile, popupAddCard,  popupImage, profileName,
+import { initialCards, config, popupFormEdit, popupFormAdd, popupEditProfileSelector, popupAddCardSelector,  popupImageSelector, profileName,
 profileDescription, popupOpenButtonEdit, popupOpenButtonAdd, list} from '../utils/constants.js';
 
 const profileInfo = new UserInfo(profileName, profileDescription);
-const imgPopup = new PopupWithImage(popupImage);
+const imgPopup = new PopupWithImage(popupImageSelector);
 const formEditValidation = new FormValidator(popupFormEdit, config);
 const formAddValidation = new FormValidator(popupFormAdd, config);
 
@@ -18,7 +18,7 @@ formEditValidation.enableValidation();
 formAddValidation.enableValidation();
 
 //popup profile
-const popupEdit = new PopupWithForm(popupEditProfile, {
+const popupEdit = new PopupWithForm(popupEditProfileSelector, {
   submitForm: (data) => {
     profileInfo.setUserInfo(data.firstname, data.description);
 
@@ -45,7 +45,7 @@ popupOpenButtonAdd.addEventListener("click", () => {
   console.log(formAddValidation.toggleButton());
 });
 
-const addCard = new PopupWithForm(popupAddCard, {
+const addCard = new PopupWithForm(popupAddCardSelector, {
   submitForm: (data) => {
     const newCardInfo = {
       link: data['link-img'],

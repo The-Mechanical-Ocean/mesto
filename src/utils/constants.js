@@ -39,10 +39,12 @@ export const config = {
 export const popupAddCardSelector = '.popup_type_add-card';
 export const popupEditProfileSelector = '.popup_type_edit';
 export const popupImageSelector = '.popup_type_image';
+export const popupConfirmSelector = '.popup_type_delete-confirm';
 
 //popup form's
 export const popupFormEdit = document.querySelector('.popup__form_type_edit-profile');
 export const popupFormAdd = document.querySelector('.popup__form_type_add-img');
+export const popupFormConfirm = document.querySelector('.popup__form_type_delete-confirm');
 
 //button
 export const popupOpenButtonEdit = document.querySelector('.profile__button-edit');

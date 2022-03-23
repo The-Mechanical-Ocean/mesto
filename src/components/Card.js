@@ -1,17 +1,46 @@
 export class Card {
-  constructor(name, link, cardTemplateSelector, { cardClick }) {
+  constructor(name, link, likes, id, userId, ownerId, cardTemplateSelector, { cardClick , delClick, likeClick }) {
     this._name = name;
     this._link = link;
+    this._likes = likes;
+    this._id = id;
+    this._userId = userId;
+    this._ownerId = ownerId;
     this._template = document.querySelector(cardTemplateSelector).content;
     this._cardClick = cardClick;
+    this._delClick = delClick;
+    this._likeClick = likeClick;
   }
 
-  _like = () => {
-    this._buttonLike.classList.toggle('cards__button-like_active');
+  isLiked() {
+    const userHasLikedCard = this._likes.find(user => user._id === this._userId)
+
+    return userHasLikedCard;
   }
 
-  _delImage = () => {
+  _addLike = () => {
+    this._buttonLike.classList.add('cards__button-like_active');
+  }
+
+  _removeLike = () => {
+    this._buttonLike.classList.remove('cards__button-like_active');
+  }
+
+  delImage  ()  {
     this._cardElement.remove();
+  }
+
+  setLike(newLikes) {
+    this._likes = newLikes;
+    const likeCountElememnt = this._cardElement.querySelector('.cards__like-count')
+    likeCountElememnt.textContent = this._likes.length;
+
+    if(this.isLiked()) {
+      this._addLike();
+    }
+    else {
+      this._removeLike();
+    }
   }
 
   createCard = () => {
@@ -27,13 +56,24 @@ export class Card {
 
     this._setEventListeners();
 
+    this.setLike(this._likes);
+
+    if (this._ownerId !== this._userId) {
+      this._buttonDel.style.display = 'none';
+    }
+
+
+    // else {
+    //   this._like();
+    // }
+
     return this._cardElement;
   }
 
   _setEventListeners() {
     this._cardImg.addEventListener('click', () => { this._cardClick(this._name, this._link) });
-    this._buttonLike.addEventListener('click', this._like);
-    this._buttonDel.addEventListener('click', this._delImage);
+    this._buttonLike.addEventListener('click', () => { this._likeClick(this._id) });
+    this._buttonDel.addEventListener('click', () => { this._delClick(this._id) });
   }
 
 }

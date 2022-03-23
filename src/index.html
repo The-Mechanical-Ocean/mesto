@@ -14,9 +14,9 @@
       <section class="profile">
         <div class="profile__avatar"></div>
         <div class="profile__info">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <h1 class="profile__name"></h1>
           <button type="button" class="profile__button-edit"></button>
-          <p class="profile__description">Исследователь океана</p>
+          <p class="profile__description"></p>
         </div>
         <button type="button" class="profile__button-add"></button>
       </section>
@@ -54,6 +54,21 @@
       </form>
     </div>
   </div>
+
+  <div class="popup popup_type_delete-confirm">
+    <div class="popup__container popup__container_popup_type_delete-confirm">
+      <button type="button" class="popup__button-close popup__button-close_type_delete-confirm"></button>
+      <h2 class="popup__name-form">Вы уверены?</h2>
+      <form class="popup__form popup__form_type_add-img" name="form-add-card" novalidate>
+        <!-- <input class="popup__input popup__input_type_name-img " type="text" name="name-img" id="img" placeholder="Название" minlength="2" maxlength="30" required>
+        <span class="popup__input-error popup__input-error_active" id="img-error"></span>
+        <input class="popup__input popup__input_type_link" type="url" name="link-img" id="link" placeholder="Ссылка на картинку" required>
+        <span class="popup__input-error popup__input-error_active" id="link-error"></span> -->
+        <button class="popup__button-save" type="submit">Да</button>
+      </form>
+    </div>
+  </div>
+
   <div class="popup popup_type_image">
     <div class="popup__card">
       <button type="button" class="popup__button-close popup__button-close_type_img-card"></button>
@@ -68,6 +83,7 @@
       <div class="cards__description">
         <h2 class="cards__text"></h2>
         <button type="button" class="cards__button-like"></button>
+        <span class="cards__like-count"></span>
       </div>
     </li>
   </template>

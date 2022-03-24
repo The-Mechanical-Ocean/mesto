@@ -31,7 +31,6 @@ export class FormValidator {
 
   //состояние кнопки
   toggleButton() {
-
     const isFormValid = this._form.checkValidity();
 
     if (isFormValid) {

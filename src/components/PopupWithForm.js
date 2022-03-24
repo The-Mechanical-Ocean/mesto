@@ -1,49 +1,61 @@
 import { Popup } from './Popup.js';
 
 export class PopupWithForm extends Popup {
-    constructor(popupSelector, { submitForm }) {
-        super(popupSelector);
-        this._popupForm = this._popup.querySelector('.popup__form');
-        this._inputsList = this._popup.querySelectorAll('.popup__input');
-        this._submitForm = submitForm;
-        this._submitHandler = this._submitHandler.bind(this);
-    }
-
-    _getInputValues() {
-        this._inputValue = {};
-        this._inputsList.forEach((input) => {
-            this._inputValue[input.name] = input.value;
-        });
-        return this._inputValue;
-    }
-
-    changeSubmitHandler(newSubmitHandler) {
-      this._submitHandler = newSubmitHandler;
-      this._removeEventListenersSubmit();
-      this._setEventListenersSubmit();
-    }
-
-    _submitHandler(evt) {
-        evt.preventDefault();
-        this._submitForm(this._getInputValues());
-    }
-
-    _setEventListenersSubmit() {
-      this._popupForm.addEventListener('submit', this._submitHandler);
+  constructor(popupSelector, { submitForm }) {
+      super(popupSelector);
+      this._popupForm = this._popup.querySelector('.popup__form');
+      this._inputsList = this._popup.querySelectorAll('.popup__input');
+      this._savingButton = this._popup.querySelector('.popup__button-save');
+      this._buttonText = this._savingButton.textContent;
+      this._submitForm = submitForm;
+      this._submitHandler = this._submitHandler.bind(this);
   }
 
-    _removeEventListenersSubmit() {
-    this._popupForm.removeEventListener('submit', this._submitHandler);
-}
+  _getInputValues() {
+    this._inputValue = {};
+    this._inputsList.forEach((input) => {
+      this._inputValue[input.name] = input.value;
+    });
 
-    open() {
-      super.open();
-      this._setEventListenersSubmit();
-    }
+    return this._inputValue;
+  }
 
-    close() {
-      super.close();
-        this._removeEventListenersSubmit();
-        this._popupForm.reset();
+  changeSubmitHandler(newSubmitHandler) {
+    this._submitHandler = newSubmitHandler;
+    this._removeEventListenersSubmit();
+    this._setEventListenersSubmit();
+  }
+
+  renderingLoad(isLoading){
+    if(isLoading){
+        this._savingButton.textContent = 'Сохранение...';
     }
+    else {
+        this._savingButton.textContent = this._buttonText;
+    }
+  }
+
+  _submitHandler(evt) {
+      evt.preventDefault();
+      this._submitForm(this._getInputValues());
+  }
+
+  _setEventListenersSubmit() {
+    this._popupForm.addEventListener('submit', this._submitHandler);
+  }
+
+  _removeEventListenersSubmit() {
+  this._popupForm.removeEventListener('submit', this._submitHandler);
+  }
+
+  open() {
+    super.open();
+    this._setEventListenersSubmit();
+  }
+
+  close() {
+    super.close();
+      this._removeEventListenersSubmit();
+      this._popupForm.reset();
+  }
 }

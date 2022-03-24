@@ -14,7 +14,6 @@ export class Card {
 
   isLiked() {
     const userHasLikedCard = this._likes.find(user => user._id === this._userId)
-
     return userHasLikedCard;
   }
 
@@ -32,6 +31,7 @@ export class Card {
 
   setLike(newLikes) {
     this._likes = newLikes;
+
     const likeCountElememnt = this._cardElement.querySelector('.cards__like-count')
     likeCountElememnt.textContent = this._likes.length;
 
@@ -61,11 +61,6 @@ export class Card {
     if (this._ownerId !== this._userId) {
       this._buttonDel.style.display = 'none';
     }
-
-
-    // else {
-    //   this._like();
-    // }
 
     return this._cardElement;
   }

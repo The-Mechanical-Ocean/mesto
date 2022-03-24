@@ -2,7 +2,5 @@
   border-radius: 50%;
   width: 120px;
   height: 120px;
-  background-image: url(../../../images/profile__image.png);
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
 }

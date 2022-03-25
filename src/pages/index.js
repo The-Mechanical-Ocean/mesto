@@ -10,29 +10,6 @@ import { config, popupFormEdit, popupFormAdd, popupFormAvatar, popupConfirmSelec
 popupEditProfileSelector, popupAvatarSelector, popupAddCardSelector,  popupImageSelector, profileName,
 profileDescription, profileAvatar, popupOpenButtonEdit, popupOpenButtonAdd, popupOpenButtonAvatar, list} from '../utils/constants.js';
 let userId
-
-api.getProfile()
-  .then(res => {
-    profileInfo.setUserInfo(res.name, res.about);
-    profileInfo.setUserAvatar(res.avatar);
-    userId = res._id;
-  })
-
-api.getInitialCards()
-.then(cardList => {
-  cardList.forEach(data => {
-    const card = {
-      link: data.link,
-      name: data.name,
-      likes: data.likes,
-      id: data._id,
-      userId: userId,
-      ownerId: data.owner._id
-    }
-    makeCard(card);
-  })
-})
-
 const profileInfo = new UserInfo(profileName, profileDescription, profileAvatar);
 const confirmPopup = new PopupWithForm(popupConfirmSelector, {submitForm: () => {}});
 const imgPopup = new PopupWithImage(popupImageSelector);
@@ -40,12 +17,23 @@ const formEditValidation = new FormValidator(popupFormEdit, config);
 const formAddValidation = new FormValidator(popupFormAdd, config);
 const formAvatarValidation = new FormValidator(popupFormAvatar, config);
 
+
+Promise.all([api.getInitialCards(), api.getProfile()])
+  .then(([cards, userInfo]) => {
+    profileInfo.setUserInfo(userInfo.name, userInfo.about);
+    profileInfo.setUserAvatar(userInfo.avatar);
+    userId = userInfo._id;
+  cards.reverse();
+  defaultCardsList.renderItems(cards);
+  })
+  .catch((err) =>{console.log(`Ошибка: ${err}`)})
+
 // On validation
 formEditValidation.enableValidation();
 formAddValidation.enableValidation();
 formAvatarValidation.enableValidation();
 
-//popup profile
+//Popup's
 const popupEdit = new PopupWithForm(popupEditProfileSelector, {
   submitForm: (data) => {
     popupEdit.renderingLoad(true);
@@ -118,7 +106,7 @@ popupOpenButtonAdd.addEventListener("click", () => {
 
 //создание карточек
 function makeCard (cardElement){
-  const card = new Card (cardElement.name, cardElement.link, cardElement.likes, cardElement.id, cardElement.userId, cardElement.ownerId,  '.cards-template',
+  const card = new Card (cardElement.name, cardElement.link, cardElement.likes, cardElement._id, userId, cardElement.ownerId,  '.cards-template',
     {
     cardClick: (name, link) => {
       imgPopup.open(name, link)
@@ -143,12 +131,14 @@ function makeCard (cardElement){
       else {
         api.addLike(id)
         .then(res => {
+          // debugger;
           card.setLike(res.likes)
         })
       }
     }
   })
   const cardItem = card.createCard();
+
   defaultCardsList.prependItem(cardItem);
 }
 

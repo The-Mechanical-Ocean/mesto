@@ -4,7 +4,7 @@ export class Section {
     this._containerSelector = containerSelector;
   }
 
-  addItem(element) {
+  appendItem(element) {
     this._containerSelector.append(element);
   }
 
@@ -12,12 +12,7 @@ export class Section {
     this._containerSelector.prepend(element);
   }
 
-  clear() {
-    this._element = null;
-  }
-
   renderItems(items) {
-    this.clear();
 
     items.forEach((item) => {
       this._renderer(item);

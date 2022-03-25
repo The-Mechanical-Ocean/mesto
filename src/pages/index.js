@@ -131,7 +131,6 @@ function makeCard (cardElement){
       else {
         api.addLike(id)
         .then(res => {
-          // debugger;
           card.setLike(res.likes)
         })
       }
@@ -144,7 +143,8 @@ function makeCard (cardElement){
 
 //Вставка карточек
 const defaultCardsList = new Section({
-  renderer: (item) => { makeCard (item) }
+  renderer: (item) => { makeCard ({name: item.name, link: item.link, likes: item.likes, _id: item._id,
+    userId: userId, ownerId: item.owner._id}) }
   },
   list
 );

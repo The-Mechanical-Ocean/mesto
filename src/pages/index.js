@@ -69,7 +69,7 @@ const addCard = new PopupWithForm(popupAddCardSelector, {
         name: res.name,
         likes: res.likes,
         _id: res._id,
-        userId: userId,
+        userId: res._id,
         ownerId: res.owner._id
       }
 

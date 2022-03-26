@@ -27,13 +27,12 @@ export class Card {
 
   delImage  ()  {
     this._cardElement.remove();
+    // this._cardElement = null;
   }
 
   setLike(newLikes) {
     this._likes = newLikes;
-
-    const likeCountElememnt = this._cardElement.querySelector('.cards__like-count')
-    likeCountElememnt.textContent = this._likes.length;
+    this._likeCountElememnt.textContent = this._likes.length;
 
     if(this.isLiked()) {
       this._addLike();
@@ -49,6 +48,7 @@ export class Card {
     this._cardText = this._cardElement.querySelector('.cards__text');
     this._buttonLike = this._cardElement.querySelector('.cards__button-like');
     this._buttonDel = this._cardElement.querySelector('.cards__button-del');
+    this._likeCountElememnt = this._cardElement.querySelector('.cards__like-count');
 
     this._cardText.textContent = this._name;
     this._cardImg.src = this._link;

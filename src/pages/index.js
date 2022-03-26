@@ -42,6 +42,7 @@ const popupEdit = new PopupWithForm(popupEditProfileSelector, {
       profileInfo.setUserInfo(data.firstname, data.description);
       popupEdit.close();
     })
+    .catch((err) =>{console.log(`Ошибка: ${err}`)})
     .finally(() =>{popupEdit.renderingLoad(false)})
   }
 });
@@ -54,6 +55,7 @@ const popupAvatar = new PopupWithForm(popupAvatarSelector, {
       profileInfo.setUserAvatar(data['link-avatar']);
       popupAvatar.close();
     })
+    .catch((err) =>{console.log(`Ошибка: ${err}`)})
     .finally(() =>{popupAvatar.renderingLoad(false)})
   }
 });
@@ -76,7 +78,7 @@ const addCard = new PopupWithForm(popupAddCardSelector, {
     makeCard(newCardInfo);
     addCard.close();
     })
-
+    .catch((err) =>{console.log(`Ошибка: ${err}`)})
     .finally(() =>{addCard.renderingLoad(false)});
   }
 });
@@ -112,6 +114,7 @@ function makeCard (cardElement){
       imgPopup.open(name, link)
     },
     delClick: (id) => {
+
       confirmPopup.open();
       confirmPopup.changeSubmitHandler(() => {
         api.deleteCard(id)
@@ -119,20 +122,23 @@ function makeCard (cardElement){
             card.delImage()
             confirmPopup.close()
           })
+          .catch((err) =>{console.log(`Ошибка: ${err}`)})
       });
     },
     likeClick: (id) => {
       if(card.isLiked()){
         api.deleteLike(id)
-      .then(res => {
-        card.setLike(res.likes)
-      })
+        .then(res => {
+          card.setLike(res.likes)
+        })
+        .catch((err) =>{console.log(`Ошибка: ${err}`)})
       }
       else {
         api.addLike(id)
         .then(res => {
           card.setLike(res.likes)
         })
+        .catch((err) =>{console.log(`Ошибка: ${err}`)})
       }
     }
   })

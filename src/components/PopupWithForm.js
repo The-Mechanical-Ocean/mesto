@@ -22,7 +22,7 @@ export class PopupWithForm extends Popup {
 
   changeSubmitHandler(newSubmitHandler) {
     this._submitHandler = newSubmitHandler;
-    this._removeEventListenersSubmit();
+    // this._removeEventListenersSubmit();
     this._setEventListenersSubmit();
   }
 

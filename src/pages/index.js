@@ -115,7 +115,6 @@ function makeCard (cardElement){
     },
     delClick: (id) => {
 
-      confirmPopup.open();
       confirmPopup.changeSubmitHandler(() => {
         api.deleteCard(id)
           .then(res => {
@@ -124,6 +123,8 @@ function makeCard (cardElement){
           })
           .catch((err) =>{console.log(`Ошибка: ${err}`)})
       });
+      confirmPopup.open()
+
     },
     likeClick: (id) => {
       if(card.isLiked()){

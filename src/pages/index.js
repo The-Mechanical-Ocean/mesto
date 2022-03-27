@@ -123,7 +123,7 @@ function makeCard (cardElement){
           })
           .catch((err) =>{console.log(`Ошибка: ${err}`)})
       });
-      confirmPopup.open();
+      confirmPopup.open()
     },
     likeClick: (id) => {
       if(card.isLiked()){

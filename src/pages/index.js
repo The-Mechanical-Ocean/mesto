@@ -114,8 +114,8 @@ function makeCard (cardElement){
       imgPopup.open(name, link)
     },
     delClick: (id) => {
-
-      confirmPopup.changeSubmitHandler(() => {
+      confirmPopup.changeSubmitHandler((evt) => {
+        evt.preventDefault();
         api.deleteCard(id)
           .then(res => {
             card.delImage()
@@ -123,8 +123,7 @@ function makeCard (cardElement){
           })
           .catch((err) =>{console.log(`Ошибка: ${err}`)})
       });
-      confirmPopup.open()
-
+      confirmPopup.open();
     },
     likeClick: (id) => {
       if(card.isLiked()){
